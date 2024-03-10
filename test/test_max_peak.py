@@ -1,6 +1,6 @@
 import unittest
 
-from lab1.scr.main import get_max_peak
+from scr.max_peak import get_max_peak
 
 
 class TestPeaks(unittest.TestCase):
