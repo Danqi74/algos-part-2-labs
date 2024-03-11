@@ -5,16 +5,17 @@ class BinaryTree:
         self.right = right
 
 
+def _binary_tree_diameter(tree: BinaryTree) -> int:
+    if tree is None:
+        return 0, 0
+    left_diameter, left_tree_length = _binary_tree_diameter(tree.left)
+    right_diameter, right_tree_length = _binary_tree_diameter(tree.right)
+    current_node_diameter = left_tree_length + right_tree_length
+    length_left = left_tree_length + 1
+    length_right = right_tree_length + 1
+    return max(left_diameter, right_diameter, current_node_diameter), max(length_left, length_right)
+
+
 def binary_tree_diameter(tree: BinaryTree) -> int:
-    if tree is None:
-        return 0
-    current_node_diameter = length_to_leaf(tree.left) + length_to_leaf(tree.right)
-    left_diameter = binary_tree_diameter(tree.left)
-    right_diameter = binary_tree_diameter(tree.right)
-    return max(left_diameter, right_diameter, current_node_diameter)
-
-
-def length_to_leaf(tree):
-    if tree is None:
-        return 0
-    return 1 + max(length_to_leaf(tree.right), length_to_leaf(tree.left))
+    result, _ = _binary_tree_diameter(tree)
+    return result
