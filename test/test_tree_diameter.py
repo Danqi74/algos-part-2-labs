@@ -1,6 +1,6 @@
 import unittest
 
-from scr.tree_diameter import BinaryTree, binary_tree_diameter
+from src.tree_diameter import BinaryTree, binary_tree_diameter
 
 
 class TestBinaryTreeDiameter(unittest.TestCase):
