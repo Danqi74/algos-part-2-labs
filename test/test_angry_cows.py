@@ -1,6 +1,6 @@
 import unittest
 
-from scr.angry_cows import get_distance
+from src.angry_cows import get_distance
 
 class TestMaxMinDistance(unittest.TestCase):
     def test_get_distance_case1(self):
