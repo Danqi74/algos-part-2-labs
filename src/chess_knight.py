@@ -1,4 +1,3 @@
-from binary_tree_priority_queue import PriorityQueue
 from typing import Tuple
 
 
@@ -21,11 +20,11 @@ def _get_min_moves_count(board_size: int, start_pos: Tuple[int, int], destinatio
     ):
         return -1
     moves = ((2, -1), (2, 1), (-2, 1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2))
-    queue = PriorityQueue()
-    queue.insert(start_pos, 0)
+    queue = []
+    queue.append(start_pos)
     count_of_moves = {start_pos: 0}
-    while queue.root:
-        vertex = queue.pop()
+    while queue:
+        vertex = queue.pop(0)
         if vertex == destination_pos:
             count_of_moves[destination_pos] = count_of_moves[vertex]
             break
@@ -39,7 +38,7 @@ def _get_min_moves_count(board_size: int, start_pos: Tuple[int, int], destinatio
             ):
                 continue
             if not new_vertex in count_of_moves:
-                queue.insert(new_vertex, -count_of_moves[vertex])
+                queue.append(new_vertex)
                 count_of_moves[new_vertex] = count_of_moves[vertex] + 1
     if not destination_pos in count_of_moves:
         return -1
