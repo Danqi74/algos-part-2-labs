@@ -38,23 +38,23 @@ def create_graph(path_to_file) -> dict:
     return graph, start_point, end_point
 
 
-def dfs(graph, start_point, end_point, path_flow=float("inf"), reached_end=False, visited=None, parent=None):
+def dfs(graph, current_point, end_point, path_flow=float("inf"), reached_end=False, visited=None, parent=None):
     if visited is None:
         visited = set()
-    visited.add(start_point)
+    visited.add(current_point)
 
-    if start_point == end_point:
+    if current_point == end_point:
         reached_end = True
     if parent:
-        path_flow = min(path_flow, graph[parent][start_point])
+        path_flow = min(path_flow, graph[parent][current_point])
 
-    for neighbor in graph[start_point]:
+    for neighbor in graph[current_point]:
         if neighbor in visited:
             continue
-        if graph[start_point][neighbor] is None:
+        if graph[current_point][neighbor] is None:
             continue
         _path_flow, reached_end = dfs(
-            graph, neighbor, end_point, path_flow, reached_end, visited, start_point
+            graph, neighbor, end_point, path_flow, reached_end, visited, current_point
         )
         if reached_end:
             path_flow = min(_path_flow, path_flow)
@@ -65,10 +65,10 @@ def dfs(graph, start_point, end_point, path_flow=float("inf"), reached_end=False
     if not reached_end:
         return float("inf"), reached_end
 
-    graph[parent][start_point] -= path_flow
+    graph[parent][current_point] -= path_flow
 
-    if graph[parent][start_point] == 0:
-        graph[parent][start_point] = None
+    if graph[parent][current_point] == 0:
+        graph[parent][current_point] = None
 
     return path_flow, reached_end
 
