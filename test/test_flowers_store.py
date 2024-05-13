@@ -4,6 +4,9 @@ from src.flowers_store import get_max_flow, create_graph
 
 
 class TestGraphCreation(unittest.TestCase):
+    def setUp(self):
+        self.input_path = "test/resources/input.csv"
+
     def test_creation(self):
         csv_data = """A
 B
@@ -12,18 +15,20 @@ A,C,13
 B,C,6
 C,D,23
 D,A,2"""
-        input_path = "test/resources/input.csv"
         expected_result = {'A': {'B': 10, 'C': 13}, 'B': {'C': 6}, 'C': {'D': 23}, 'D': {'A': 2}}, 'A', 'B'
 
-        with open(input_path, "w") as file:
+        with open(self.input_path, "w") as file:
             file.write(csv_data)
 
-        result = create_graph(input_path)
+        result = create_graph(self.input_path)
         self.assertEqual(result, expected_result)
 
 
 
 class TestMaxFlow(unittest.TestCase):
+    def setUp(self):
+        self.input_path = "test/resources/input.csv"
+
     def test_without_virtual_points(self):
         csv_data = """A
 F
@@ -36,13 +41,12 @@ C,D,4
 E,D,4
 E,F,5
 D,F,12"""
-        input_path = "test/resources/input.csv"
         expected_result = 10
 
-        with open(input_path, "w") as file:
+        with open(self.input_path, "w") as file:
             file.write(csv_data)
 
-        result = get_max_flow(input_path)
+        result = get_max_flow(self.input_path)
         self.assertEqual(result, expected_result)
 
     def test_without_path(self):
@@ -51,13 +55,12 @@ M
 A,B,7
 A,C,4
 """
-        input_path = "test/resources/input.csv"
         expected_result = 0
 
-        with open(input_path, "w") as file:
+        with open(self.input_path, "w") as file:
             file.write(csv_data)
 
-        result = get_max_flow(input_path)
+        result = get_max_flow(self.input_path)
         self.assertEqual(result, expected_result)
 
     def test_with_virtual_points(self):
@@ -74,13 +77,12 @@ B,E,13
 E,D,18
 E,H,5
 """
-        input_path = "test/resources/input.csv"
         expected_result = 19
 
-        with open(input_path, "w") as file:
+        with open(self.input_path, "w") as file:
             file.write(csv_data)
 
-        result = get_max_flow(input_path)
+        result = get_max_flow(self.input_path)
         self.assertEqual(result, expected_result)
 
 
