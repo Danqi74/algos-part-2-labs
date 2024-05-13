@@ -1,9 +1,6 @@
 import unittest
 
-from importmonkey import add_path
-add_path("../src/")
-
-from trie import Trie, create_trie
+from src.trie import Trie, create_trie
 
 
 class TestTrie(unittest.TestCase):

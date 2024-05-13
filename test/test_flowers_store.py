@@ -1,10 +1,6 @@
 import unittest
 
-from importmonkey import add_path
-
-add_path("../src/")
-
-from flowers_store import get_max_flow, create_graph
+from src.flowers_store import get_max_flow, create_graph
 
 
 class TestGraphCreation(unittest.TestCase):

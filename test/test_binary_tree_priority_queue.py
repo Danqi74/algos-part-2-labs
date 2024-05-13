@@ -1,9 +1,5 @@
 import unittest
 
-from importmonkey import add_path
-
-add_path("../")
-
 from src.binary_tree_priority_queue import PriorityQueue
 
 
