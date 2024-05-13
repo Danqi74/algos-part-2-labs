@@ -1,10 +1,6 @@
 import unittest
 
-from importmonkey import add_path
-
-add_path("../src/")
-
-from gas_supply import check_gas_supply
+from src.gas_supply import check_gas_supply
 
 
 class TestGasSupply(unittest.TestCase):

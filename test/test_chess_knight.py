@@ -1,10 +1,6 @@
 import unittest
 
-from importmonkey import add_path
-
-add_path("../src/")
-
-from chess_knight import get_min_moves_count
+from src.chess_knight import get_min_moves_count
 
 
 class TestGetMinKnightMovesCount(unittest.TestCase):
@@ -13,8 +9,8 @@ class TestGetMinKnightMovesCount(unittest.TestCase):
         start_pos = "7, 0"
         destination_pos = "0, 7"
         expected_result = 6
-        input_path = "test/input.txt"
-        output_path = "test/output.txt"
+        input_path = "test/resources/input.txt"
+        output_path = "test/resources/output.txt"
         with open(input_path, "w") as file:
             file.writelines(board_size + "\n")
             file.writelines(start_pos + "\n")
@@ -29,8 +25,8 @@ class TestGetMinKnightMovesCount(unittest.TestCase):
         start_pos = "0, 0"
         destination_pos = "1, 1"
         expected_result = -1
-        input_path = "test/input.txt"
-        output_path = "test/output.txt"
+        input_path = "test/resources/input.txt"
+        output_path = "test/resources/output.txt"
         with open(input_path, "w") as file:
             file.writelines(board_size + "\n")
             file.writelines(start_pos + "\n")
@@ -45,8 +41,8 @@ class TestGetMinKnightMovesCount(unittest.TestCase):
         start_pos = "0, 0"
         destination_pos = "1, 1"
         expected_result = 4
-        input_path = "test/input.txt"
-        output_path = "test/output.txt"
+        input_path = "test/resources/input.txt"
+        output_path = "test/resources/output.txt"
         with open(input_path, "w") as file:
             file.writelines(board_size + "\n")
             file.writelines(start_pos + "\n")
@@ -61,8 +57,8 @@ class TestGetMinKnightMovesCount(unittest.TestCase):
         start_pos = "7, 0"
         destination_pos = "0, 0"
         expected_result = -1
-        input_path = "test/input.txt"
-        output_path = "test/output.txt"
+        input_path = "test/resources/input.txt"
+        output_path = "test/resources/output.txt"
         with open(input_path, "w") as file:
             file.writelines(board_size + "\n")
             file.writelines(start_pos + "\n")
@@ -77,8 +73,8 @@ class TestGetMinKnightMovesCount(unittest.TestCase):
         start_pos = "0, 0"
         destination_pos = "7, 0"
         expected_result = -1
-        input_path = "test/input.txt"
-        output_path = "test/output.txt"
+        input_path = "test/resources/input.txt"
+        output_path = "test/resources/output.txt"
         with open(input_path, "w") as file:
             file.writelines(board_size + "\n")
             file.writelines(start_pos + "\n")
