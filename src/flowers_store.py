@@ -4,7 +4,7 @@ import csv
 def create_graph(path_to_file) -> dict:
     graph = {}
 
-    with open(path_to_file) as file:
+    with open(path_to_file, encoding="utf 8") as file:
         reader = csv.reader(file)
         farms = next(reader)
         stores = next(reader)
@@ -15,6 +15,7 @@ def create_graph(path_to_file) -> dict:
         if len(farms) > 1:
             start_point = "VirtualStartPoint"
             graph[start_point] = {}
+
         if len(stores) > 1:
             end_point = "VirtualEndPoint"
             graph[end_point] = {}
@@ -23,6 +24,7 @@ def create_graph(path_to_file) -> dict:
             graph[farm] = {}
             if start_point != farms[0]:
                 graph[start_point][farm] = float("inf")
+
         for store in stores:
             graph[store] = {}
             if end_point != stores[0]:
